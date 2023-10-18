@@ -12,7 +12,7 @@ const ItemSchema = new Schema({
 
 // Virtual for Item url
 ItemSchema.virtual('url').get(function () {
-  return `/items/${this._id}`
+  return `/inventory/item/${this._id}`
 })
 
 // Export model
