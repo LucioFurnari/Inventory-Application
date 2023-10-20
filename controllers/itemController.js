@@ -1,7 +1,16 @@
 const Item = require('../models/item');
+const Category = require('../models/category');
 const asyncHandler = require('express-async-handler');
+const { body, validationResult } = require('express-validator');
 
-// Display list of all Items.
+// Display all products
+exports.products_list = asyncHandler(async (req, res, next) => {
+  const allProducts = await Item.find({});
+
+  res.render('products_list', {products: allProducts})
+})
+
+// Display list of all Items for category.
 exports.item_list = asyncHandler(async (req, res, next) => {
   const allItems = await Item.find({ category: req.params.id}).exec();
 
@@ -17,7 +26,9 @@ exports.item_detail = asyncHandler(async (req, res, next) => {
 
 // Display Item create form on GET.
 exports.item_create_get = asyncHandler(async (req, res, next) => {
+  const categoriesList = await Category.find({}).exec();
 
+  res.render('item_form', { categories: categoriesList })
 });
 
 // Handle Item create on POST.
