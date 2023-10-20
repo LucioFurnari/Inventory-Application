@@ -1,0 +1,17 @@
+extends layout 
+
+block content 
+  form(action="", method="POST")
+    label(for="item_name") Name of the item
+    input(type="text", name="item_name", placeholder='Name', id='item_name') 
+    label(for="item_description") Description of the item
+    textarea(name="item_description", cols="30", rows="5", id="item_description") 
+    label(for="categories") Categories:
+    select(name="item_category", id="categories")
+      each category in categories
+        option(value=category.name) #{category.name}
+    label(for="item_price") 
+    input(type="number", name="item_price", id="item_price")
+    label(for="item_stock") 
+    input(type="number", id="item_stock", name="item_stock")
+    button(type="submit") Submit
