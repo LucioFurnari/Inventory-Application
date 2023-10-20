@@ -1,10 +1,13 @@
 extends layout
 
 block content
-  h1= title
-  h2 Database contains the following
-  ul 
-    li
-      p Categories: #{numCategories}
-    li 
-      p Items: #{numItems}
+  section(class='index-section')
+    h1= title
+    h2 Database contains the following
+    ul 
+      li
+        p Categories: 
+          span #{numCategories}
+      li 
+        p Items: 
+          span #{numItems}
