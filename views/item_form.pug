@@ -2,16 +2,26 @@ extends layout
 
 block content 
   form(action="", method="POST")
-    label(for="item_name") Name of the item
-    input(type="text", name="item_name", placeholder='Name', id='item_name') 
-    label(for="item_description") Description of the item
-    textarea(name="item_description", cols="30", rows="5", id="item_description") 
-    label(for="categories") Categories:
-    select(name="item_category", id="categories")
-      each category in categories
-        option(value=category.name) #{category.name}
-    label(for="item_price") 
-    input(type="number", name="item_price", id="item_price")
-    label(for="item_stock") 
-    input(type="number", id="item_stock", name="item_stock")
+    fieldset(class='floating-label')
+      input(type="text", name="item_name", placeholder='', id='item_name') 
+      label(for="item_name") Name of the item
+    fieldset(class='floating-label')
+      textarea(name="item_description", cols="30", rows="5", id="item_description") 
+      label(for="item_description") Description of the item
+    fieldset 
+      label(for="categories") Categories:    
+      select(type="select", name="item_category", id="categories")
+        each category in categories
+          option(value=category._id) #{category.name}
+    fieldset(class='floating-label') 
+      input(type="number", name="item_price", id="item_price")
+      label(for="item_price") Item price
+    fieldset(class='floating-label') 
+      input(type="number", id="item_stock", name="item_stock")
+      label(for="item_stock") Item stock
     button(type="submit") Submit
+
+  if errors 
+    ul
+      for error in errors
+        li!= error.msg
