@@ -1,6 +1,134 @@
+$link-bg: #c4754b
+$color-white: #ffff
+$color-black: #000000
+$color-gray: #9c9c9c
+$link-hover: #b66040
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video 
+	margin: 0
+	padding: 0
+	border: 0
+	font-size: 100%
+	font: inherit
+	vertical-align: baseline
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section 
+	display: block
+
+body 
+	line-height: 1
+
+ol, ul 
+	list-style: none
+
+blockquote, q 
+	quotes: none
+
+blockquote:before, blockquote:after,
+q:before, q:after 
+	content: ''
+	content: none
+
+table 
+	border-collapse: collapse
+	border-spacing: 0
+
+
+
+* 
+  list-style: none
+
 body
-  padding: 50px
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif
 
+h1 
+  font-size: 1.6rem
 a
   color: #00B7FF
+  text-decoration: none
+
+.index-section
+  margin: 0 auto
+  width: 75%
+  h2 
+    font-size: 1.2rem
+    padding: 0.5rem 0
+  li 
+    padding: 1rem
+    border: 1px solid $color-gray
+    p 
+      font-weight: 700
+      span
+        font-weight: 500
+
+.categories-list 
+  li
+    margin: 0.6rem
+    a 
+      display: inline-block
+      padding: 0.6rem
+      background-color: $link-bg
+      color: $color-white
+    a:hover 
+      background-color: $link-hover
+
+.flex 
+  display: flex
+
+.list-nav 
+  a
+    display: inline-block
+    padding: 1rem
+    background-color: $link-bg
+    color: $color-white
+  a:hover 
+    background-color: $link-hover
+
+form
+  button
+    border: none
+    padding: 1rem
+    background-color: $link-bg
+    color: $color-white
+    font-size: 16px
+    font-weight: 500
+  button:hover
+    background-color: $link-hover
+
+.floating-label 
+  position: relative
+  margin: 1rem 0
+  label 
+    position: absolute
+    top: 0.8rem
+    left: 0.8rem
+    font-size: 16px
+    transition:
+      property: top, left, font-size 
+      duration: 0.3s
+  input
+    padding: 0.8rem
+  textarea
+    padding: 0.8rem
+  input:focus + label
+    font-size: 12px
+    top: 0
+    left: 0.8rem
+  textarea:focus + label
+    font-size: 12px
+    top: 0
+    left: 0.8rem
