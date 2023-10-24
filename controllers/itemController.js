@@ -75,11 +75,62 @@ exports.item_delete_post = asyncHandler(async (req, res, next) => {
 
 // Display Item update form on GET.
 exports.item_update_get = asyncHandler(async (req, res, next) => {
+  const [categoriesList, item] = await Promise.all([
+    await Category.find({}).exec(),
+    await Item.findById({ _id: req.params.id }).exec(),
+  ])
 
+  for (const category of categoriesList) {
+    if (category._id.toString() === item.category.toString()) {
+      category.selected = true;
+    }
+  }
+
+
+  res.render('item_form', { categories: categoriesList, item: item })
 });
 
 // Handle Item update on POST.
-exports.item_update_post = asyncHandler (async (req, res, next) => {
+exports.item_update_post = [
+  body('item_name', 'Empty name').trim().isLength({ min: 1}).escape(),
+  body('item_description', 'Dont leave the description empty').trim().isLength({ min: 1}).escape(),
+  body('item_category', 'Select one category').trim().isLength({ min: 1}).escape(),
+  body('item_price', 'Must be a integer number').trim().isInt().escape(),
+  body('item_stock', 'Must be a integer number').trim().isInt().escape(),
 
-});
+  asyncHandler(async (req, res, next) => {
+    const errors = validationResult(req);
+
+    // Create a Item object with escaped and trimmed data.
+    const item = new Item({
+      name: req.body.item_name,
+      description: req.body.item_description,
+      category: req.body.item_category,
+      price: req.body.item_price,
+      stock: req.body.item_stock,
+      _id: req.params.id,
+    })
+
+    if (!errors.isEmpty()) {
+      const [categoriesList, item] = await Promise.all([
+        await Category.find({}).exec(),
+        await Item.findById({ _id: req.params.id }).exec(),
+      ])
+    
+      for (const category of categoriesList) {
+        if (category._id.toString() === item.category.toString()) {
+          category.selected = true;
+        }
+      }
+    
+      res.render('item_form', {errors: errors.array(), categories: categoriesList, item: item })
+      return;
+    } else {
+      // Data from form is valid. Update the record.
+      const updatedItem = await Item.findByIdAndUpdate(req.params.id, item, {});
+      // Redirect to item detail page.
+      res.redirect(updatedItem.url)
+    }
+  })
+];
 
