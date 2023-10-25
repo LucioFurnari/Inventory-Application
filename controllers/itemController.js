@@ -10,13 +10,6 @@ exports.products_list = asyncHandler(async (req, res, next) => {
   res.render('products_list', {products: allProducts})
 })
 
-// Display list of all Items for category.
-exports.item_list = asyncHandler(async (req, res, next) => {
-  const allItems = await Item.find({ category: req.params.id}).exec();
-
-  res.render('items_list', { title: 'Item list', items_list: allItems })
-});
-
 // Display detail page for a specific Item
 exports.item_detail = asyncHandler(async (req, res, next) => {
   const item = await Item.findOne({ _id: req.params.id })
