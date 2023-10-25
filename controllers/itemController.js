@@ -65,12 +65,19 @@ exports.item_create_post = [
 ]
 // Display Item delete form on GET.
 exports.item_delete_get = asyncHandler(async (req, res, next) => {
+  const item = await Item.findById(req.params.id).exec();
 
+  if (item === null) {
+    res.redirect('/inventory/products');
+  }
+
+  res.render('item_delete', { item: item});
 });
 
 // Handle Item delete on POST.
 exports.item_delete_post = asyncHandler(async (req, res, next) => {
-
+  await Item.findByIdAndRemove(req.body.itemId);
+  res.redirect('/inventory/products');
 });
 
 // Display Item update form on GET.
