@@ -37,4 +37,10 @@ router.get('/item/:id/update', item_controller.item_update_get);
 // POST update form for Item.
 router.post('/item/:id/update', item_controller.item_update_post);
 
+// GET delete form for Item.
+router.get('/item/:id/delete', item_controller.item_delete_get);
+
+// POST delete Item.
+router.post('/item/:id/delete', item_controller.item_delete_post);
+
 module.exports = router;
