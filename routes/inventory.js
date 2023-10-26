@@ -14,8 +14,11 @@ router.get('/categories', category_controller.categories_list);
 // GET category form.
 router.get('/category/create', category_controller.category_create_get);
 
+// POST category form.
+router.post('/category/create', category_controller.category_create_post);
+
 // GET item list for category.
-router.get('/category/:id', item_controller.item_list);
+router.get('/category/:id', category_controller.item_list);
 
 /// ITEM ROUTES ///
 
