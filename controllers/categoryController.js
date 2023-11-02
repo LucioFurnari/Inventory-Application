@@ -22,9 +22,12 @@ exports.categories_list = asyncHandler(async (req, res, next) => {
 
 // Display list of all Items for category.
 exports.item_list = asyncHandler(async (req, res, next) => {
-  const allItems = await Item.find({ category: req.params.id}).exec();
+  const [category, allItems] = await Promise.all([
+    Category.findById(req.params.id).exec(),
+    Item.find({ category: req.params.id}).exec()
+  ])
 
-  res.render('category_detail', { title: 'Item list', items_list: allItems })
+  res.render('category_detail', { title: 'Item list', items_list: allItems, category })
 });
 
 // Display Category create form on GET
@@ -58,20 +61,60 @@ exports.category_create_post = [
 
 // Display Category update form on GET
 exports.category_update_get = asyncHandler(async (req, res, next) => {
+  const category = await Category.findById(req.params.id).exec();
 
+  res.render('category_form', { category })
 });
 
 // Handle Category update on POST
-exports.category_update_post = asyncHandler(async (req, res, next) => {
+exports.category_update_post = [
+  body('category_name', 'Empty name').trim().isLength({ min: 1}).escape(),
+  body('category_description', 'The description should not be empty').trim().isLength({ min: 1}).escape(),
 
-});
+  asyncHandler(async (req, res, next) => {
+    const errors = validationResult(req);
+
+    const newCategory = new Category({
+      name: req.body.category_name,
+      description: req.body.category_description,
+      _id: req.params.id
+    })
+
+    if (!errors.isEmpty()) {
+      const category = await Category.findById(req.params.id).exec();
+
+      res.render('category_form', { category, errors });
+      return;
+    } else {
+      // Data from form is valid.
+      const updatedCategory = await Category.findByIdAndUpdate(req.params.id, newCategory, {});
+      res.redirect(updatedCategory.url);
+    }
+  }),
+]
 
 // Display Category delete form on GET
 exports.category_delete_get = asyncHandler(async (req, res, next) => {
+  const [category, itemList] = await Promise.all([
+    Category.findById(req.params.id).exec(),
+    Item.find({ category: req.params.id }).exec(),
+  ]);
 
+  res.render('category_delete', { items: itemList, category });
 });
 
 // Handle Category delete on POST
 exports.category_delete_post = asyncHandler(async (req, res, next) => {
+  const [category, itemList] = await Promise.all([
+    Category.findById(req.params.id).exec(),
+    Item.find({ category: req.params.id }).exec(),
+  ]);
 
+  if (itemList.length > 0) {
+    res.render('category_delete', { items: itemList, category });
+    return;
+  } else {
+    await Category.findByIdAndRemove(req.body.categoryId);
+    res.redirect('/inventory/categories');
+  }
 });
