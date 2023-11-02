@@ -17,8 +17,20 @@ router.get('/category/create', category_controller.category_create_get);
 // POST category form.
 router.post('/category/create', category_controller.category_create_post);
 
-// GET item list for category.
+// GET item list for Category.
 router.get('/category/:id', category_controller.item_list);
+
+// GET update form for Category.
+router.get('/category/:id/update', category_controller.category_update_get);
+
+// POST update Category.
+router.post('/category/:id/update', category_controller.category_update_post);
+
+// GET delete form for Category.
+router.get('/category/:id/delete', category_controller.category_delete_get);
+
+// POST delete Category.
+router.post('/category/:id/delete', category_controller.category_delete_post);
 
 /// ITEM ROUTES ///
 
