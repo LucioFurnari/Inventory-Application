@@ -5,4 +5,4 @@ block content
   ul 
     each item in products
       li 
-        p #{item.name}
+        a(href=item.url) #{item.name}
