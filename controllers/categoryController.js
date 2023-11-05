@@ -83,7 +83,7 @@ exports.category_update_post = [
     if (!errors.isEmpty()) {
       const category = await Category.findById(req.params.id).exec();
 
-      res.render('category_form', { category, errors });
+      res.render('category_form', { category, errors: errors.array() });
       return;
     } else {
       // Data from form is valid.
