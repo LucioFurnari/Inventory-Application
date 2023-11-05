@@ -114,9 +114,9 @@ form
   margin: 1rem 0
   label 
     position: absolute
-    top: 0.8rem
+    top: 0rem
     left: 0.8rem
-    font-size: 16px
+    font-size: 12px
     transition:
       property: top, left, font-size 
       duration: 0.3s
@@ -124,11 +124,23 @@ form
     padding: 0.8rem
   textarea
     padding: 0.8rem
-  input:focus + label
-    font-size: 12px
-    top: 0
-    left: 0.8rem
-  textarea:focus + label
-    font-size: 12px
-    top: 0
-    left: 0.8rem
+  input
+    &:placeholder-shown ~ label
+      font-size: 16px
+      top: 0.8rem
+      left: 0.8rem
+  input
+    &:focus ~ label
+      font-size: 12px
+      top: 0
+      left: 0.8rem
+  textarea
+    &:placeholder-shown ~ label
+      font-size: 16px
+      top: 0.8rem
+      left: 0.8rem
+  textarea
+    &:focus ~ label
+      font-size: 12px
+      top: 0
+      left: 0.8rem
