@@ -4,12 +4,27 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const sassMiddleware = require('node-sass-middleware');
+const compression = require('compression');
+const helmet = require('helmet');
+const RateLimit = require('express-rate-limit');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const inventoryRouter = require('./routes/inventory');
 
 const app = express();
+
+const limiter = RateLimit({
+  windowMs: 1 * 60 * 1000, // 1 minute
+  max: 60,
+})
+
+// Apply rate limiter to all requests
+app.use(limiter);
+
+// Add helmet
+// Set CSP headers to allow our Bootstrap and Jquery to be served
+app.use(helmet());
 
 // Set up mongoose connection
 const mongoose = require('mongoose');
@@ -35,6 +50,9 @@ app.use(sassMiddleware({
   indentedSyntax: true, // true = .sass and false = .scss
   sourceMap: true
 }));
+
+app.use(compression());
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
