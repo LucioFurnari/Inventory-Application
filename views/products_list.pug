@@ -1,8 +1,9 @@
 extends layout 
 
 block content 
-
-  ul 
-    each item in products
-      li 
-        a(href=item.url) #{item.name}
+  section(class='products-list')
+    h1 List of all products
+    ul 
+      each item in products
+        li 
+          a(href=item.url) #{item.name}
