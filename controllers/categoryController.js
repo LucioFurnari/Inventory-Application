@@ -10,7 +10,7 @@ exports.index = asyncHandler(async (req, res, next) => {
     await Item.countDocuments({}).exec(),
   ]);
 
-  res.render('index', { title: 'Inventory', numCategories, numItems })
+  res.render('index', { title: 'Inventory Application', numCategories, numItems })
 });
 
 // Display list of all Categories
