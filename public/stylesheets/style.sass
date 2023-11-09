@@ -3,6 +3,8 @@ $color-white: #ffff
 $color-black: #000000
 $color-gray: #9c9c9c
 $link-hover: #b66040
+$products-link-hover: #c8c8c8
+$input-focus: #c65e38
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -61,9 +63,14 @@ a
   color: #00B7FF
   text-decoration: none
 
+// Index section //
+
 .index-section
   margin: 0 auto
+  margin-top: 2rem
   width: 75%
+  h1 
+    font-size: 3.6rem
   h2 
     font-size: 1.2rem
     padding: 0.5rem 0
@@ -75,31 +82,40 @@ a
       span
         font-weight: 500
 
-.categories-list 
-  li
-    margin: 0.6rem
-    a 
-      display: inline-block
-      padding: 0.6rem
-      background-color: $link-bg
-      color: $color-white
-    a:hover 
-      background-color: $link-hover
-
 .flex 
   display: flex
 
+// Nav //
+.nav-list
+  background-color: $link-bg
+
 .list-nav 
+  margin-left: 26px
+  padding: 12px 0
   a
     display: inline-block
     padding: 1rem
-    background-color: $link-bg
     color: $color-white
+    font-size: 1.2rem
+    transition-property: background-color
+    transition-duration: 0.2s
+    border-radius: 12px
   a:hover 
     background-color: $link-hover
 
+.active 
+  background-color: $link-hover
+
+// Forms //
+
+.form-section
+  margin: 2rem
+  fieldset
+    margin: 1rem 0
+
 form
   button
+    cursor: pointer
     border: none
     padding: 1rem
     background-color: $link-bg
@@ -117,30 +133,88 @@ form
     top: 0rem
     left: 0.8rem
     font-size: 12px
+    padding-top: 4px
     transition:
       property: top, left, font-size 
       duration: 0.3s
   input
     padding: 0.8rem
+    padding-top: 1.2rem
+    border: none
+    border-bottom: 1px solid $color-gray
+    outline: none
   textarea
     padding: 0.8rem
+    padding-top: 1.2rem
+    border: none
+    border-bottom: 1px solid $color-gray
+    outline: none
   input
     &:placeholder-shown ~ label
       font-size: 16px
       top: 0.8rem
       left: 0.8rem
+      padding-top: 0px
   input
+    &:focus 
+      border-bottom: 2px solid $input-focus
+      margin-bottom: -1px
     &:focus ~ label
       font-size: 12px
       top: 0
       left: 0.8rem
+      padding-top: 4px
+      color: $input-focus
   textarea
     &:placeholder-shown ~ label
       font-size: 16px
       top: 0.8rem
       left: 0.8rem
   textarea
+    &:focus 
+      border-bottom: 2px solid $input-focus
+      margin-bottom: -1px
     &:focus ~ label
       font-size: 12px
       top: 0
       left: 0.8rem
+      padding-top: 4px
+      color: $input-focus
+
+// Products list section //
+.products-list 
+  width: 50%
+  margin-top: 2rem
+  margin-left: 2rem
+  h1 
+    font-size: 3.6rem
+  li
+    a
+      display: inline-block
+      padding: 1rem
+      border-bottom: 1px solid $color-gray
+      width: 100%
+      font-size: 1.2rem
+      transition-property: background-color
+      transition-duration: 0.2s
+    a:hover
+      background-color: $products-link-hover
+
+// Categories section//
+.categories-list
+  width: 50%
+  margin-top: 2rem
+  margin-left: 2rem
+  h1
+    font-size: 3.6rem
+  li
+    a
+      display: inline-block
+      padding: 1rem
+      border-bottom: 1px solid $color-gray
+      width: 100%
+      font-size: 1.2rem
+      transition-property: background-color
+      transition-duration: 0.2s
+    a:hover
+      background-color: $products-link-hover
