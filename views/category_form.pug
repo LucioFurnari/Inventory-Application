@@ -1,16 +1,17 @@
 extends layout 
 
 block content 
-  form(action="", method="POST")
-    fieldset(class='floating-label')
-      input(type="text", name="category_name", placeholder='', id='category_name', value=(category === undefined ? '' : category.name)) 
-      label(for="category_name") Name of the category
-    fieldset(class='floating-label')
-      textarea(name="category_description", cols="30", rows="5", id="category_description", placeholder="") #{category === undefined ? '' : category.description}
-      label(for="category_description") Description of the category
-    button(type="submit") Submit
+  section(class='form-section')
+    form(action="", method="POST")
+      fieldset(class='floating-label')
+        input(type="text", name="category_name", placeholder='', id='category_name', value=(category === undefined ? '' : category.name)) 
+        label(for="category_name") Name of the category
+      fieldset(class='floating-label')
+        textarea(name="category_description", cols="30", rows="5", id="category_description", placeholder="") #{category === undefined ? '' : category.description}
+        label(for="category_description") Description of the category
+      button(type="submit") Submit
 
-  if errors
-    ul
-      for error in errors
-        li!= error.msg
+    if errors
+      ul
+        for error in errors
+          li!= error.msg
