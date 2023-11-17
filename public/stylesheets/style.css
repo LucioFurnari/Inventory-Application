@@ -55,9 +55,11 @@ a {
   text-decoration: none; }
 
 .index-section {
-  margin: 0 auto;
-  margin-top: 2rem;
-  width: 75%; }
+  max-width: 1280px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 2rem; }
   .index-section h1 {
     font-size: 3.6rem; }
   .index-section h2 {
@@ -95,7 +97,11 @@ a {
   background-color: #b66040; }
 
 .form-section {
-  margin: 2rem; }
+  max-width: 1280px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 2rem; }
   .form-section fieldset {
     margin: 1rem 0; }
 
@@ -113,7 +119,12 @@ form button:hover {
 
 .floating-label {
   position: relative;
+  display: flex;
+  flex-direction: column;
   margin: 1rem 0; }
+  .floating-label span {
+    color: #cf0000;
+    padding-left: 1rem; }
   .floating-label label {
     position: absolute;
     top: 0rem;
@@ -195,5 +206,76 @@ form button:hover {
     transition-duration: 0.2s; }
   .categories-list li a:hover {
     background-color: #c8c8c8; }
+
+.item-section {
+  max-width: 1280px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 2rem; }
+  .item-section h1 {
+    font-size: 3.6rem; }
+  .item-section .item-description {
+    margin-bottom: 2rem; }
+  .item-section .item-description h3 {
+    font-weight: 700;
+    font-size: 1.6rem; }
+  .item-section a {
+    display: inline-block;
+    color: #ffff;
+    background-color: #c4754b;
+    padding: 1rem;
+    transition-property: background-color;
+    transition-duration: 0.2; }
+    .item-section a:last-child {
+      margin-left: 1rem; }
+    .item-section a:hover {
+      background-color: #b66040; }
+  .item-section .item-price {
+    margin-bottom: 2rem; }
+    .item-section .item-price p {
+      font-size: 1.2rem; }
+
+.delete-section {
+  max-width: 1280px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 2rem; }
+
+.category-section {
+  max-width: 1280px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 2rem; }
+  .category-section a {
+    display: inline-block;
+    color: #ffff;
+    background-color: #c4754b;
+    padding: 1rem;
+    font-size: 1.4rem;
+    transition-property: background-color;
+    transition-duration: 0.2; }
+    .category-section a:last-child {
+      margin-left: 1rem; }
+    .category-section a:hover {
+      background-color: #b66040; }
+  .category-section .item-list li {
+    margin-top: 2rem;
+    margin-bottom: 2rem; }
+    .category-section .item-list li a {
+      display: inline-block;
+      padding: 1rem;
+      margin: 0;
+      border-bottom: 1px solid #9c9c9c;
+      background-color: #ffffff00;
+      color: #31c4ff;
+      width: 100%;
+      font-size: 1.2rem;
+      transition-property: background-color;
+      transition-duration: 0.2s; }
+    .category-section .item-list li a:hover {
+      background-color: #c8c8c8; }
 
 /*# sourceMappingURL=style.css.map */

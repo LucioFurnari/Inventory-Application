@@ -1,10 +1,13 @@
 $link-bg: #c4754b
+$link-color: #31c4ff
 $color-white: #ffff
 $color-black: #000000
 $color-gray: #9c9c9c
 $link-hover: #b66040
 $products-link-hover: #c8c8c8
 $input-focus: #c65e38
+$bg-transparent: #ffffff00
+$error: #cf0000
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -49,7 +52,13 @@ table
 	border-collapse: collapse
 	border-spacing: 0
 
-
+//----------------------------------------------------------------------//
+@mixin section()
+  max-width: 1280px
+  width: 100%
+  margin-left: auto
+  margin-right: auto
+  padding: 2rem
 
 * 
   list-style: none
@@ -66,9 +75,7 @@ a
 // Index section //
 
 .index-section
-  margin: 0 auto
-  margin-top: 2rem
-  width: 75%
+  @include section
   h1 
     font-size: 3.6rem
   h2 
@@ -109,7 +116,7 @@ a
 // Forms //
 
 .form-section
-  margin: 2rem
+  @include section
   fieldset
     margin: 1rem 0
 
@@ -127,7 +134,12 @@ form
 
 .floating-label 
   position: relative
+  display: flex
+  flex-direction: column
   margin: 1rem 0
+  span
+    color: $error
+    padding-left: 1rem
   label 
     position: absolute
     top: 0rem
@@ -218,3 +230,66 @@ form
       transition-duration: 0.2s
     a:hover
       background-color: $products-link-hover
+
+// Item section //
+.item-section
+  @include section
+  h1 
+    font-size: 3.6rem
+  .item-description
+    margin-bottom: 2rem
+  .item-description h3 
+    font-weight: 700
+    font-size: 1.6rem
+  a
+    display: inline-block
+    color: $color-white
+    background-color: $link-bg
+    padding: 1rem
+    transition-property: background-color
+    transition-duration: 0.2
+    &:last-child
+      margin-left: 1rem
+    &:hover
+      background-color: $link-hover
+  .item-price
+    margin-bottom: 2rem
+    p
+      font-size: 1.2rem
+
+// Delete item //
+.delete-section
+  @include section
+
+// Category section //
+.category-section
+  @include section
+  a
+    display: inline-block
+    color: $color-white
+    background-color: $link-bg
+    padding: 1rem
+    font-size: 1.4rem
+    transition-property: background-color
+    transition-duration: 0.2
+    &:last-child
+      margin-left: 1rem
+    &:hover
+      background-color: $link-hover
+  .item-list
+    li
+      margin-top: 2rem
+      margin-bottom: 2rem
+      a
+        display: inline-block
+        padding: 1rem
+        margin: 0
+        border-bottom: 1px solid $color-gray
+        background-color: $bg-transparent
+        color: $link-color
+        width: 100%
+        font-size: 1.2rem
+        transition-property: background-color
+        transition-duration: 0.2s
+      a:hover
+        background-color: $products-link-hover
