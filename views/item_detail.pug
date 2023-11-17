@@ -2,10 +2,14 @@ extends layout
 
 block content 
 
-  h1 #{itemDetail.name}
-  p #{itemDetail.description}
-  p Price: #{itemDetail.price}
-  p Stock: #{itemDetail.stock}
+  section(class='item-section')
+    h1 #{itemDetail.name}
+    div(class='item-description')
+      h3 Description:
+      p #{itemDetail.description}
+    div(class='item-price')
+      p Price: #{itemDetail.price} $
+      p Stock: #{itemDetail.stock} u
 
-  a(href=itemDetail.url+'/update')  Update item
-  a(href=itemDetail.url+'/delete')  Delete item
+    a(href=itemDetail.url+'/update')  Update item
+    a(href=itemDetail.url+'/delete')  Delete item
