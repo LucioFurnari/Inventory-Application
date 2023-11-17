@@ -1,14 +1,15 @@
 extends layout 
 
 block content 
-  h1= title
-  p #{category.description}
-  ul 
-    each item in items_list
-      li 
-        a(href=item.url) #{item.name}
-    else 
-      li There are no items.
+  section(class='category-section')
+    h1= title
+    p #{category.description}
+    ul(class='item-list')
+      each item in items_list
+        li 
+          a(href=item.url) #{item.name}
+      else 
+        li There are no items.
 
-  a(href=category.url+'/delete') Delete
-  a(href=category.url+'/update') Update
+    a(href=category.url+'/delete') Delete
+    a(href=category.url+'/update') Update
