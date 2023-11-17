@@ -22,7 +22,7 @@ block content
           //- span #{errors[2].msg}    
       fieldset(class='floating-label') 
         input(type="number", name="item_price", id="item_price", value=(item===undefined ? 0 : item.price), min=0)
-        label(for="item_price") Item 
+        label(for="item_price") Item price
         if errors
           //- span #{errors[3].msg}
       fieldset(class='floating-label') 
