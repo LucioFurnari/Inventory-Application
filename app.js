@@ -29,7 +29,8 @@ app.use(helmet());
 // Set up mongoose connection
 const mongoose = require('mongoose');
 mongoose.set('strictQuery', false);
-const mongoDB = 'mongodb+srv://luciofurnari99:oTKnMyIEDWybrs7Y@cluster0.g8fy0b4.mongodb.net/inventory_app?retryWrites=true&w=majority'
+const dev_db_url = 'mongodb+srv://luciofurnari99:oTKnMyIEDWybrs7Y@cluster0.g8fy0b4.mongodb.net/inventory_app?retryWrites=true&w=majority';
+const mongoDB = process.env.MONGODB_URL || dev_db_url;
 
 async function connectToMongoDB() {
   await mongoose.connect(mongoDB);
