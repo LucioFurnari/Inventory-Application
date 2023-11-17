@@ -3,6 +3,7 @@ $link-color: #31c4ff
 $color-white: #ffff
 $color-black: #000000
 $color-gray: #9c9c9c
+$bg-base: #c4754b
 $link-hover: #b66040
 $products-link-hover: #c8c8c8
 $input-focus: #c65e38
@@ -65,6 +66,9 @@ table
 
 body
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif
+  min-height: 100vh
+  display: flex
+  flex-direction: column
 
 h1 
   font-size: 1.6rem
@@ -293,3 +297,15 @@ form
         transition-duration: 0.2s
       a:hover
         background-color: $products-link-hover
+
+// Footer //
+footer
+  display: flex
+  align-items: center
+  background-color: $bg-base
+  padding: 1rem
+  margin-top: auto
+  img
+    margin-left: 2rem
+  a
+    color: $color-black
