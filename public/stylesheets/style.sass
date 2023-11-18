@@ -9,6 +9,8 @@ $products-link-hover: #c8c8c8
 $input-focus: #c65e38
 $bg-transparent: #ffffff00
 $error: #cf0000
+$title-size-lg: 3.6rem
+$subtitle-size-lg: 2.4rem
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -76,10 +78,11 @@ a
   color: #00B7FF
   text-decoration: none
 
+section
+  @include section
 // Index section //
 
 .index-section
-  @include section
   h1 
     font-size: 3.6rem
   h2 
@@ -120,7 +123,6 @@ a
 // Forms //
 
 .form-section
-  @include section
   fieldset
     margin: 1rem 0
 
@@ -237,7 +239,6 @@ form
 
 // Item section //
 .item-section
-  @include section
   h1 
     font-size: 3.6rem
   .item-description
@@ -263,11 +264,18 @@ form
 
 // Delete item //
 .delete-section
-  @include section
+  h1
+    font-size: $title-size-lg
+  p
+    font-size: 1.2rem
+    margin: 1rem 0
+  span
+    text-decoration: underline
+  button
+    border-radius: 12px
 
 // Category section //
 .category-section
-  @include section
   a
     display: inline-block
     color: $color-white
@@ -298,6 +306,28 @@ form
       a:hover
         background-color: $products-link-hover
 
+// Category delete//
+.category-delete
+  h1
+    font-size: $title-size-lg
+  h2
+    font-size: $subtitle-size-lg
+    margin-bottom: 1rem
+  p
+    font-size: 1.2rem
+  a
+    display: inline-block
+    padding: 1rem
+    margin: 1rem 0
+    border-bottom: 1px solid $color-gray
+    background-color: $bg-transparent
+    color: $link-color
+    width: 100%
+    font-size: 1.2rem
+    transition-property: background-color
+    transition-duration: 0.2s
+    &:hover
+      background-color: $products-link-hover
 // Footer //
 footer
   display: flex
@@ -309,3 +339,5 @@ footer
     margin-left: 2rem
   a
     color: $color-black
+    display: flex
+    align-items: center
