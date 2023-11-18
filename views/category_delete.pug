@@ -1,15 +1,15 @@
 extends layout 
 
 block content  
-  h1 Delete category
-  h2 #{category.name}
-  p #{category.id}
-  if items.length
-    p Delete this items to remove the category.
-    each item in items
-      a(href=item.url) #{item.name}
-  else 
-    h2 Do you really want to delete this Category?
-    form(action="", method="POST") 
-      input(type="hidden", name="categoryId", required=true, value=category.id)
-      button(type="submit") Delete
+  section(class='category-delete')
+    h1 Delete category
+    h2 #{category.name}
+    if items.length
+      p Delete this items to remove the category.
+      each item in items
+        a(href=item.url) #{item.name}
+    else 
+      h2 Do you really want to delete this Category?
+      form(action="", method="POST") 
+        input(type="hidden", name="categoryId", required=true, value=category.id)
+        button(type="submit") Delete
