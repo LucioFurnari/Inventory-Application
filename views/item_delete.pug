@@ -3,6 +3,8 @@ extends layout
 block content 
   section(class='delete-section')
     h1 Delete Item
+    p Do you really want to delete 
+      span #{item.name}?
     form(action='', method='POST') 
       input(type='hidden', name='itemId', required='true', value=item._id)
       button(type='submit') Delete
