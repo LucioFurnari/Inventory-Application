@@ -6,7 +6,7 @@
 - MongoDB
 - Mongoose
 
-![alt text](./images/Inventory%20Application%20DB%20Diagram.png)
+![alt text](./images/Inventory_Diagram.png)
 
 # Features:
  - Create, update and delete Items.
